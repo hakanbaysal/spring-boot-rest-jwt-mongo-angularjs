@@ -766,6 +766,25 @@ angular.module('app')
                         templateUrl: 'views/login.html',
                         ncyBreadcrumb: {
                             label: 'Login'
+                        },
+                        resolve: {
+                            deps: [
+                                '$ocLazyLoad',
+                                function($ocLazyLoad) {
+                                    return $ocLazyLoad.load([]).then(
+                                        function() {
+                                            return $ocLazyLoad.load(
+                                            {
+                                                serie: true,
+                                                files: [
+                                                    'app/controllers/login.js',
+                                                    'app/services/auth.js'
+                                                ]
+                                            });
+                                        }
+                                    );
+                                }
+                            ]
                         }
                     })
                     .state('register', {
@@ -773,6 +792,25 @@ angular.module('app')
                         templateUrl: 'views/register.html',
                         ncyBreadcrumb: {
                             label: 'Register'
+                        },
+                        resolve: {
+                            deps: [
+                                '$ocLazyLoad',
+                                function($ocLazyLoad) {
+                                    return $ocLazyLoad.load([]).then(
+                                        function() {
+                                            return $ocLazyLoad.load(
+                                            {
+                                                serie: true,
+                                                files: [
+                                                    'app/controllers/register.js',
+                                                    'app/services/auth.js'
+                                                ]
+                                            });
+                                        }
+                                    );
+                                }
+                            ]
                         }
                     })
                     .state('lock', {

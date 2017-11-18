@@ -1,5 +1,6 @@
 package com.halitkorkmaz.api.controllers;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,5 +63,10 @@ public class AuthController {
 			return ResponseEntity.badRequest().body(
 					new Response<ApplicationUser>(errors));
 		}
+	}
+
+	@RequestMapping("/user")
+	public Principal user(Principal user) {
+		return user;
 	}
 }
